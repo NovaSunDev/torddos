@@ -144,7 +144,7 @@ class Tor:
             except: current_proxy = session.get('http://ifconfig.me/ip').text
             # Take a fresh proxy
             if current_proxy not in self.used_proxies:
-                print(u'\n{}[!]{} New proxy: {}{}{}').format(Fore.BLUE, Fore.END, Fore.GREEN, current_proxy, Fore.RESET)
+                print(u'\n{}[!]{} New proxy: {}{}{}')
                 self.used_proxies.append(current_proxy)
                 break
         return session
